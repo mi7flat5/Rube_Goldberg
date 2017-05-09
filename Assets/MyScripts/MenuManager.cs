@@ -47,7 +47,9 @@ public class MenuManager : MonoBehaviour
     {
        
         Instantiate(objectPrefabList[currentObject],transform.position, transform.rotation);
-      
+        
+        objectList[currentObject].SetActive(false);
+        currentObject = 0;
     }
 
     void Update()
