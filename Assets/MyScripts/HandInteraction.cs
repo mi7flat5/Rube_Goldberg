@@ -24,50 +24,52 @@ public class HandInteraction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-      
-        if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad))
+        if (menuManager)
         {
-            touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
-        }
-        if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad))
-        {
-            touchCurrent = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
-            distance = touchCurrent.x - touchLast.x;
-            touchLast = touchCurrent;
-            swipeSum += distance;
-            if (!hasSwipedRight)
+            if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                if (swipeSum > 0.5f)
-                {
-                    swipeSum = 0;
-                    SwipeRight();
-                    hasSwipedRight = true;
-                    hasSwipedLeft = false;
-                }
+                touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
             }
-            if (!hasSwipedLeft)
+            if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                if (swipeSum < -0.5f)
+                touchCurrent = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+                distance = touchCurrent.x - touchLast.x;
+                touchLast = touchCurrent;
+                swipeSum += distance;
+                if (!hasSwipedRight)
                 {
-                    swipeSum = 0;
-                    SwipeLeft();
-                    hasSwipedLeft = true;
-                    hasSwipedRight = false;
+                    if (swipeSum > 0.5f)
+                    {
+                        swipeSum = 0;
+                        SwipeRight();
+                        hasSwipedRight = true;
+                        hasSwipedLeft = false;
+                    }
                 }
+                if (!hasSwipedLeft)
+                {
+                    if (swipeSum < -0.5f)
+                    {
+                        swipeSum = 0;
+                        SwipeLeft();
+                        hasSwipedLeft = true;
+                        hasSwipedRight = false;
+                    }
+                }
+
             }
-           
-        }
-        if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Touchpad))
-        {
-            swipeSum = 0;
-            touchCurrent = new Vector2(0, 0);
-            touchLast = new Vector2(0, 0);
-            hasSwipedLeft = false;
-            hasSwipedRight = false;
-        }
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
-        {
-            menuManager.SpawnCurrentObject();
+            if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Touchpad))
+            {
+                swipeSum = 0;
+                touchCurrent = new Vector2(0, 0);
+                touchLast = new Vector2(0, 0);
+                hasSwipedLeft = false;
+                hasSwipedRight = false;
+            }
+            if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+            {
+                menuManager.SpawnCurrentObject();
+            }
         }
 	}
 
