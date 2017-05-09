@@ -100,19 +100,31 @@ public class HandInteraction : MonoBehaviour {
 
     private void GrabObject(Collider col)
     {
+        if (menuManager && menuManager.bDestroyObject())
+        {
+            Destroy(col.gameObject);
+            device.TriggerHapticPulse(2000);
+            Debug.Log("object destroyed, trigger down");
+            return;
+        }
         col.transform.SetParent(gameObject.transform);
-        //col.GetComponent<Rigidbody>().isKinematic = true;
+        col.GetComponent<Rigidbody>().isKinematic = true;
         device.TriggerHapticPulse(2000);
+       
         Debug.Log("object touched, trigger down");
     }
 
     private void ThrowObject(Collider col)
     {
         col.transform.SetParent(null);
-       // Rigidbody rigidB = col.GetComponent<Rigidbody>();
-        //rigidB.isKinematic = false;
-        //rigidB.velocity = device.velocity * throwForce;
-        //rigidB.angularVelocity = device.angularVelocity;
+        Debug.Log(col.name);
+        if (col.gameObject.name == "TestBall(Clone)")
+        {
+            Rigidbody rigidB = col.GetComponent<Rigidbody>();
+            rigidB.isKinematic = false;
+            rigidB.velocity = device.velocity * throwForce;
+            rigidB.angularVelocity = device.angularVelocity;
+        }
         Debug.Log("object thrown");
     }
 }

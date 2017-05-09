@@ -54,4 +54,10 @@ public class MenuManager : MonoBehaviour
     {
 
     }
+   public bool bDestroyObject()
+    {
+        if (objectList[currentObject].name == "ObjectDestroyer")
+            return true;
+        else return false;
+    }
 }
