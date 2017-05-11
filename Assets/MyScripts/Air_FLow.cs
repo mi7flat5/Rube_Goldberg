@@ -13,11 +13,12 @@ public class Air_FLow : MonoBehaviour {
 	void Update () {
 		
 	}
-    void OnTriggerEnter(Collider collider)
+    
+    void OnTriggerStay(Collider collider)
     {
-       // collider.gameObject.GetComponent<Rigidbody>().velocity = new Vector3();
-       if(collider.CompareTag("Play_Ball"))
-        collider.gameObject.GetComponentInParent<Rigidbody>().AddForce(transform.forward * fanSpeed, ForceMode.Impulse);
+        collider.gameObject.GetComponent<Rigidbody>().velocity = new Vector3();
+       if(collider.name == "Ball"||collider.name == "Ball_throw(Clone)" || collider.name == "TestBall(Clone)")
+        collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * fanSpeed, ForceMode.Impulse);
 
     }
 }

@@ -18,7 +18,7 @@ public class DestroyStar : MonoBehaviour {
         toggle ^= 1;
         if (toggle==1)
         {
-            if (collider.CompareTag("Play_Ball"))
+            if (collider.name == "Ball" || collider.name == "Ball_throw(Clone)")
             {
                 GetComponent<AudioSource>().Play();
                 GetComponent<MeshRenderer>().enabled = false;

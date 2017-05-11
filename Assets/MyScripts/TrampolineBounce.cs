@@ -17,14 +17,14 @@ public class TrampolineBounce : MonoBehaviour {
     {
        
        
-       if(collider.gameObject.GetComponentInParent<Rigidbody>().angularVelocity.magnitude < 0.14)
-        {
-            Vector3 randDir= new Vector3(Random.Range(3, 6), Random.Range(3, 6), Random.Range(3, 6));
-            collider.gameObject.GetComponentInParent<Rigidbody>().angularVelocity = randDir;
-            collider.gameObject.GetComponentInParent<Rigidbody>().AddForce(randDir.normalized, ForceMode.Impulse);
-        }
+       //if(collider.gameObject.GetComponent<Rigidbody>().angularVelocity.magnitude < 0.14)
+       // {
+       //     Vector3 randDir= new Vector3(Random.Range(3, 6), Random.Range(3, 6), Random.Range(3, 6));
+       //     collider.gameObject.GetComponentInParent<Rigidbody>().angularVelocity = randDir;
+       //     collider.gameObject.GetComponentInParent<Rigidbody>().AddForce(randDir.normalized, ForceMode.Impulse);
+       // }
       
-        collider.gameObject.GetComponentInParent<Rigidbody>().AddForce(transform.forward * bounceForce, ForceMode.Impulse);
+        collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * bounceForce, ForceMode.Impulse);
 
     }
 

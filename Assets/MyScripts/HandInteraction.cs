@@ -16,14 +16,18 @@ public class HandInteraction : MonoBehaviour {
     public bool hasSwipedLeft;
     public bool hasSwipedRight;
     public MenuManager menuManager;
+    private GameObject objectParent;
    
 	void Start () {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input((int)trackedObj.index);
+       
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        device = SteamVR_Controller.Input((int)trackedObj.index);
+
         if (menuManager)
         {
             if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad))
@@ -87,13 +91,17 @@ public class HandInteraction : MonoBehaviour {
     {
         if (col.CompareTag("Throwable"))
         {
-            if(device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
+            if(device.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
             {
                 ThrowObject(col);
             }
-            else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) 
+            else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip) ) 
             {
                 GrabObject(col);
+            }
+            if (menuManager && device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)&& menuManager.bDestroyObject())
+            {
+               GrabObject(col);
             }
         }
     }
@@ -107,6 +115,7 @@ public class HandInteraction : MonoBehaviour {
             Debug.Log("object destroyed, trigger down");
             return;
         }
+       //bjectParent = col.transform.parent.gameObject;
         col.transform.SetParent(gameObject.transform);
         col.GetComponent<Rigidbody>().isKinematic = true;
         device.TriggerHapticPulse(2000);
@@ -116,9 +125,11 @@ public class HandInteraction : MonoBehaviour {
 
     private void ThrowObject(Collider col)
     {
-        col.transform.SetParent(null);
+        if (col.name == "Ball" || col.name == "Ball_throw(Clone)")
+            col.transform.SetParent(gameObject.transform.parent);
+        else  col.transform.SetParent(null);
         Debug.Log(col.name);
-        if (col.gameObject.name == "TestBall(Clone)")
+        if (!(col.gameObject.name == "BuildingBlock(Clone)"))
         {
             Rigidbody rigidB = col.GetComponent<Rigidbody>();
             rigidB.isKinematic = false;

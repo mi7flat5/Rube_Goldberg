@@ -45,7 +45,8 @@ public class MenuManager : MonoBehaviour
 
     public void SpawnCurrentObject()
     {
-       
+
+        if(!(objectList[currentObject].name == "ObjectDestroyer"))
         Instantiate(objectPrefabList[currentObject],transform.position, transform.rotation);
         
         objectList[currentObject].SetActive(false);
