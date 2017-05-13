@@ -129,13 +129,22 @@ public class HandInteraction : MonoBehaviour {
             col.transform.SetParent(gameObject.transform.parent);
         else  col.transform.SetParent(null);
         Debug.Log(col.name);
-        if (!(col.gameObject.name == "BuildingBlock(Clone)"))
-        {
-            Rigidbody rigidB = col.GetComponent<Rigidbody>();
-            rigidB.isKinematic = false;
-            rigidB.velocity = device.velocity * throwForce;
-            rigidB.angularVelocity = device.angularVelocity;
+        switch (col.gameObject.name) {
+
+            case "BuildingBlock(Clone)": return;
+            case "pipe(Clone)": return;
+            case "Elbow(Clone)": return;
+            default:
+                Rigidbody rigidB = col.GetComponent<Rigidbody>();
+                rigidB.isKinematic = false;
+                rigidB.velocity = device.velocity * throwForce;
+                rigidB.angularVelocity = device.angularVelocity;
+                break;
+
         }
+       
+            
+        
         Debug.Log("object thrown");
     }
 }
