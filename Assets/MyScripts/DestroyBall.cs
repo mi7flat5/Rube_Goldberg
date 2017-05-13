@@ -4,14 +4,14 @@ using UnityEngine.Events;
 using UnityEngine;
 
 public class DestroyBall : MonoBehaviour
-{
+{ 
     public int toggle;
-   
 
+    private RubeGameLogic logic;
     // Use this for initialization
     void Start()
     {
-       
+        logic = GameObject.Find("GameLogic").GetComponent<RubeGameLogic>();
 
     }
 
@@ -27,8 +27,8 @@ public class DestroyBall : MonoBehaviour
         {
             if (collider.CompareTag("Floor"))
             {
-                
-                gameObject.SendMessageUpwards("ResetGame");
+
+                logic.ResetGame();
 
             }
         }

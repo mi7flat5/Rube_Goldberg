@@ -125,9 +125,7 @@ public class HandInteraction : MonoBehaviour {
 
     private void ThrowObject(Collider col)
     {
-        if (col.name == "Ball" || col.name == "Ball_throw(Clone)")
-            col.transform.SetParent(gameObject.transform.parent);
-        else  col.transform.SetParent(null);
+         col.transform.SetParent(null);
         Debug.Log(col.name);
         switch (col.gameObject.name) {
 
