@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Accelerate : MonoBehaviour
 {
-     private float Speed = 3.2f;
+     public float Speed = 0f;
     // Use this for initialization
     void Start()
     {
@@ -16,7 +16,7 @@ public class Accelerate : MonoBehaviour
     {
 
     }
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
         
         if (collider.name == "Ball" || collider.name == "Ball_throw(Clone)" || collider.name == "TestBall(Clone)")

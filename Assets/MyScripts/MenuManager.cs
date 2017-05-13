@@ -46,8 +46,11 @@ public class MenuManager : MonoBehaviour
     public void SpawnCurrentObject()
     {
 
-        if(!(objectList[currentObject].name == "ObjectDestroyer"))
-        Instantiate(objectPrefabList[currentObject],transform.position, transform.rotation);
+        if ((objectList[currentObject].name == "ObjectDestroyer"))
+            return;
+        if (objectPrefabList[currentObject].name == "ConveyorObject")
+            Instantiate(objectPrefabList[currentObject], transform.position, Quaternion.Euler( transform.rotation.x,transform.rotation.y,90));
+        else  Instantiate(objectPrefabList[currentObject],transform.position, transform.rotation);
         
         objectList[currentObject].SetActive(false);
         currentObject = 0;

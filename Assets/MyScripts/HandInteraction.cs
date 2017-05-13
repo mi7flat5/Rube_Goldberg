@@ -115,6 +115,7 @@ public class HandInteraction : MonoBehaviour {
             Debug.Log("object destroyed, trigger down");
             return;
         }
+     
        //bjectParent = col.transform.parent.gameObject;
         col.transform.SetParent(gameObject.transform);
         col.GetComponent<Rigidbody>().isKinematic = true;
@@ -132,6 +133,7 @@ public class HandInteraction : MonoBehaviour {
             case "BuildingBlock(Clone)": return;
             case "pipe(Clone)": return;
             case "Elbow(Clone)": return;
+            case "ConveyorObject(Clone)": return;
             default:
                 Rigidbody rigidB = col.GetComponent<Rigidbody>();
                 rigidB.isKinematic = false;

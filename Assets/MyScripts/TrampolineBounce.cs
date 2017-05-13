@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrampolineBounce : MonoBehaviour {
-    public float bounceForce = 4.0f;
+    public float bounceForce;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,16 +15,11 @@ public class TrampolineBounce : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider collider)
     {
-       
-       
-       //if(collider.gameObject.GetComponent<Rigidbody>().angularVelocity.magnitude < 0.14)
-       // {
-       //     Vector3 randDir= new Vector3(Random.Range(3, 6), Random.Range(3, 6), Random.Range(3, 6));
-       //     collider.gameObject.GetComponentInParent<Rigidbody>().angularVelocity = randDir;
-       //     collider.gameObject.GetComponentInParent<Rigidbody>().AddForce(randDir.normalized, ForceMode.Impulse);
-       // }
-      
-        collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * bounceForce, ForceMode.Impulse);
+
+
+        //collider.gameObject.GetComponent<Rigidbody>().velocity = new Vector3();
+        if (collider.name == "Ball" || collider.name == "Ball_throw(Clone)" || collider.name == "TestBall(Clone)")
+            collider.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * bounceForce, ForceMode.Impulse);
 
     }
 
