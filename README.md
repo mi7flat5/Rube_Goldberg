@@ -8,15 +8,15 @@ Also launching a scene while steam VR is not on will cause a "Blue Screen", this
 took a few hours to redo.  <br><br>
 
 I took a few liberties with button choices and which hand the menu was on for the sake of playability. My playtester and I felt that this settup was a little more intuitive. 
-<br>
-<br>
-<h1>[Video of possible solution to level 1](https://youtu.be/eJZ-zGkH-HI)</h1>
 
 
-<br>
-<h1><a href src="https://youtu.be/XpdsOeCdq80">Another video of possible solution to level 1</a></h1>
-<br>
+[Video of possible solution to level 1](https://youtu.be/eJZ-zGkH-HI)
 
 
-<h1><a href src="https://youtu.be/5yDBahvPeX0">Video of possible solution to level 2</a></h1>
-<br>
+
+[Another video of possible solution to level 1](https://youtu.be/XpdsOeCdq80)
+
+
+
+[Video of possible solution to level 2](https://youtu.be/5yDBahvPeX0)
+
