@@ -10,7 +10,7 @@ took a few hours to redo.  <br><br>
 I took a few liberties with button choices and which hand the menu was on for the sake of playability. My playtester and I felt that this settup was a little more intuitive. 
 <br>
 <br>
-<h1><a href src="https://youtu.be/eJZ-zGkH-HI">Video of possible solution to level 1</h1>
+<h1><a href src="https://youtu.be/eJZ-zGkH-HI">Video of possible solution to level 1</a></h1>
 
 
 <br>
