@@ -134,6 +134,7 @@ public class HandInteraction : MonoBehaviour {
             case "pipe(Clone)": return;
             case "Elbow(Clone)": return;
             case "ConveyorObject(Clone)": return;
+         
             default:
                 Rigidbody rigidB = col.GetComponent<Rigidbody>();
                 rigidB.isKinematic = false;

@@ -13,6 +13,7 @@ public class RubeGameLogic : MonoBehaviour {
     private Vector3[] starPos;
     private Vector3 initBallPos;
     private uint starCount = 0;
+    
 	// Use this for initialization
 	void Start () {
         initBallPos = ball.transform.position;
@@ -22,6 +23,8 @@ public class RubeGameLogic : MonoBehaviour {
             starPos[i] = stars[i].transform.position;
         }
         Debug.Log(stars.Length);
+       
+
 	}
 	
 	// Update is called once per frame
