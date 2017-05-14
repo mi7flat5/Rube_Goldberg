@@ -33,6 +33,7 @@ public class HandInteraction : MonoBehaviour {
             if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 touchLast = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+                menuManager.ActivateCurrent();
             }
             if (device.GetTouch(SteamVR_Controller.ButtonMask.Touchpad))
             {
@@ -69,10 +70,12 @@ public class HandInteraction : MonoBehaviour {
                 touchLast = new Vector2(0, 0);
                 hasSwipedLeft = false;
                 hasSwipedRight = false;
+                
             }
             if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 menuManager.SpawnCurrentObject();
+                menuManager.DactivateCurrent();
             }
         }
 	}

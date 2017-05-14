@@ -32,6 +32,7 @@ public class HandControllerInput : MonoBehaviour
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
         laser = GetComponentInChildren<LineRenderer>();
+        teleportAimerObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class HandControllerInput : MonoBehaviour
          {
 
         //- teleporting
-        if (device.GetPress(SteamVR_Controller.ButtonMask.Trigger))
+        if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 laser.gameObject.SetActive(true);
                 laser.SetPosition(0, gameObject.transform.position);
@@ -107,14 +108,14 @@ public class HandControllerInput : MonoBehaviour
                     //teleportAimerObject.transform.position = teleportLocation + new Vector3(0, yNudge, 0);
                 }
             }
-            if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
+            if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 laser.gameObject.SetActive(false);
                 teleportAimerObject.SetActive(false);
                
-                //  player.transform.position = teleportLocation;
-                dashStartPosition = player.transform.position;
-                isDashing = true;
+                  player.transform.position = teleportLocation;
+                //dashStartPosition = player.transform.position;
+                isDashing = false;//set to true and uncomment previous line to dash
             }
         }
     }

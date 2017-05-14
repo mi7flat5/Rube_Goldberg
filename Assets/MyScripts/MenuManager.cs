@@ -20,7 +20,8 @@ public class MenuManager : MonoBehaviour
       
 
     }
-
+    public void ActivateCurrent() { objectList[currentObject].SetActive(true); }
+    public void DactivateCurrent() { objectList[currentObject].SetActive(false); }
     public void MenuLeft()
     {
         objectList[currentObject].SetActive(false);
@@ -53,7 +54,7 @@ public class MenuManager : MonoBehaviour
         else  Instantiate(objectPrefabList[currentObject],transform.position, transform.rotation);
         
         objectList[currentObject].SetActive(false);
-        currentObject = 0;
+        
     }
 
     void Update()
